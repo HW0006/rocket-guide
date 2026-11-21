@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Print and fly the rocket</title>
+<style>
+:root{--bg:#faf9f5;--card:#fff;--ink:#2c2c2a;--muted:#5f5e5a;--line:#d3d1c7;--warn-bg:#faeeda;--warn-ink:#633806}
+@media (prefers-color-scheme:dark){:root{--bg:#1f1e1d;--card:#2a2928;--ink:#f1efe8;--muted:#b4b2a9;--line:#444441;--warn-bg:#412402;--warn-ink:#fac775}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:760px;margin:0 auto;padding:28px 18px 60px}
+h1{font-size:28px;margin:0 0 4px;font-weight:600}
+h2{font-size:21px;margin:36px 0 10px;font-weight:600}
+p.sub{color:var(--muted);margin:0 0 18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;margin:12px 0}
+svg{display:block;width:100%;height:auto}
+ol{padding-left:24px;margin:8px 0}
+li{margin:8px 0}
+.warn{background:var(--warn-bg);color:var(--warn-ink);border-radius:10px;padding:12px 14px;margin:16px 0}
+table{border-collapse:collapse;width:100%;margin:8px 0}
+td{padding:7px 8px;border-bottom:1px solid var(--line)}
+td:first-child{color:var(--muted);width:42%}
+.t,.th{font-size:14px;fill:var(--ink)}.th{font-weight:600}.ts{font-size:12px;fill:var(--muted)}
+.leader{stroke:var(--muted);stroke-width:.7;stroke-dasharray:3 3}
+.ink{stroke:var(--ink)}.inkf{fill:var(--ink)}
+.gray{fill:#b4b2a9;stroke:#5f5e5a;stroke-width:.7}
+label.chk{display:flex;gap:10px;align-items:flex-start;margin:8px 0;cursor:pointer}
+label.chk input{width:20px;height:20px;margin-top:4px;flex:none}
+body.zh .en,body:not(.zh) .zh{display:none}
+.lang{display:flex;gap:8px;margin:0 0 18px}
+.lang button{font:inherit;padding:8px 18px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.lang button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.dl .btn{display:inline-block;text-decoration:none;font:inherit;font-weight:600;padding:12px 20px;border-radius:10px;border:0;background:#D85A30;color:#fff;cursor:pointer;margin:0 6px}
+mark.n{background:#fac775;color:#412402;font-weight:700;padding:1px 5px;border-radius:5px;white-space:nowrap}
+svg .n{font-weight:700;fill:#D85A30}
+.key{border-left:4px solid #EF9F27;padding:6px 12px;margin:0 0 8px}
+.files{margin:12px 6px 4px;padding-left:20px}.files li{margin:6px 0}.files a{color:#D85A30;font-weight:600;word-break:break-all}
+.foot{color:var(--muted);font-size:14px;margin-top:40px}
+</style>
+</head>
+<body>
+<main>
+<div class="lang"><button id="b-en" aria-pressed="true">English</button><button id="b-zh" aria-pressed="false">中文</button></div>
+<h1><span class="en">Print and fly the rocket</span><span class="zh">列印並發射火箭</span></h1>
+<p class="sub"><span class="en">Three stages: print it, pack it, launch it. This design has not been printed or flown yet, so treat the first try as a test.</span><span class="zh">三個階段:列印、組裝、發射。這個設計還沒有實際列印或試飛過,第一次請當作測試。</span></p>
+
+<p class="key"><span class="en">The <mark class="n">highlighted</mark> numbers matter. Measure them, do not guess.</span><span class="zh"><mark class="n">標示</mark>的數字很重要。請實際測量,不要用猜的。</span></p>
+<h2><span class="en">1. Print it</span><span class="zh">1. 列印</span></h2>
+<div class="card">
+<svg viewBox="0 0 680 350" role="img" aria-label="The airframe stands on its fins and the nose cone stands point up on the printer bed, each with a brim.">
+<rect x="110" y="300" width="340" height="10" rx="3" fill="#888780" opacity="0.5"/>
+<ellipse cx="215" cy="300" rx="85" ry="4" fill="#EF9F27" opacity="0.8"/>
+<ellipse cx="360" cy="300" rx="32" ry="4" fill="#EF9F27" opacity="0.8"/>
+<rect class="gray" x="200" y="70" width="30" height="230"/><polygon class="gray" points="200,300 150,300 150,268 200,222"/><polygon class="gray" points="230,300 280,300 280,268 230,222"/>
+<rect x="349" y="278" width="22" height="22" fill="#F0997B" stroke="#993C1D" stroke-width="0.7"/>
+<path d="M345 278 Q345 215 360 190 Q375 215 375 278 Z" fill="#F0997B" stroke="#993C1D" stroke-width="0.7"/>
+<line class="leader" x1="230" y1="120" x2="468" y2="120"/>
+<text class="th en" x="474" y="118">Airframe</text><text class="th zh" x="474" y="118">箭體</text><text class="ts en" x="474" y="136">Standing on its fins</text><text class="ts zh" x="474" y="136">尾翼朝下站立</text>
+<line class="leader" x1="374" y1="230" x2="468" y2="210"/>
+<text class="th en" x="474" y="208">Nose cone</text><text class="th zh" x="474" y="208">鼻錐</text><text class="ts en" x="474" y="226">Point up</text><text class="ts zh" x="474" y="226">尖端朝上</text>
+<line class="leader" x1="392" y1="300" x2="468" y2="290"/>
+<text class="th en" x="474" y="288">Brim</text><text class="th zh" x="474" y="288">Brim 裙邊</text><text class="ts en" x="474" y="306">Thin skirt, peel off after</text><text class="ts zh" x="474" y="306">薄薄一圈,印完撕掉</text>
+<text class="ts en" x="280" y="334" text-anchor="middle">Printer bed</text><text class="ts zh" x="280" y="334" text-anchor="middle">列印平台</text>
+</svg>
+</div>
+<div class="card dl">
+<p style="margin:4px 6px 8px"><span class="en">Download everything in one zip, or pick single files below.</span><span class="zh">一次下載全部(zip),或在下面挑選單一檔案。</span></p>
+<a class="btn" href="files/rocket_files.zip" download><span class="en">Download all rocket files (.zip)</span><span class="zh">下載全部火箭檔案 (.zip)</span></a>
+<ul class="files">
+<li><a href="files/rocket_airframe.stl" download>rocket_airframe.stl</a> <span class="en">print this</span><span class="zh">列印用</span></li>
+<li><a href="files/rocket_nosecone.stl" download>rocket_nosecone.stl</a> <span class="en">print this</span><span class="zh">列印用</span></li>
+<li><a href="files/rocket_assembly.step" download>rocket_assembly.step</a> <span class="en">open in CAD (Fusion, Onshape, SolidWorks)</span><span class="zh">用 CAD 開啟(Fusion、Onshape、SolidWorks)</span></li>
+<li><a href="files/rocket_airframe.step" download>rocket_airframe.step</a> <span class="en">CAD, airframe only</span><span class="zh">CAD,只有箭體</span></li>
+<li><a href="files/rocket_nosecone.step" download>rocket_nosecone.step</a> <span class="en">CAD, nose cone only</span><span class="zh">CAD,只有鼻錐</span></li>
+<li><a href="files/rocket.py" download>rocket.py</a> <span class="en">source code to change sizes</span><span class="zh">可修改尺寸的原始碼</span></li>
+</ul>
+</div>
+<table>
+<tr><td><span class="en">Files</span><span class="zh">檔案</span></td><td><span class="en">rocket_airframe.stl and rocket_nosecone.stl</span><span class="zh">rocket_airframe.stl 和 rocket_nosecone.stl</span></td></tr>
+<tr><td><span class="en">Filament</span><span class="zh">線材</span></td><td><span class="en">PETG, nozzle at <mark class="n">240 °C</mark></span><span class="zh">PETG,噴嘴 <mark class="n">240 °C</mark></span></td></tr>
+<tr><td><span class="en">Layer height</span><span class="zh">層高</span></td><td><mark class="n">0.2 mm</mark></td></tr>
+<tr><td><span class="en">Supports</span><span class="zh">支撐</span></td><td><span class="en">Off</span><span class="zh">關閉</span></td></tr>
+<tr><td><span class="en">Brim</span><span class="zh">Brim 裙邊</span></td><td><span class="en">On</span><span class="zh">開啟</span></td></tr>
+<tr><td><span class="en">Tallest part</span><span class="zh">最高的零件</span></td><td><span class="en"><mark class="n">20 cm</mark>, so check it fits your printer</span><span class="zh"><mark class="n">20 公分</mark>,請確認印表機放得下</span></td></tr>
+</table>
+<ol>
+<li><span class="en">Load the filament: heat the nozzle, cut the filament tip at an angle, push it in, and press Load until plastic comes out.</span><span class="zh">裝線材:先加熱噴嘴,把線材前端斜剪,插入進料口,按「進料」直到噴嘴擠出塑膠。</span></li>
+<li><span class="en">Drag both files into the slicer and stand them up like the picture.</span><span class="zh">把兩個檔案拖進切片軟體,照圖片的方式立起來。</span></li>
+<li><span class="en">Pick the settings in the table, then Slice and Print.</span><span class="zh">照表格選好設定,然後按「切片」再按「列印」。</span></li>
+<li><span class="en">Watch the first few minutes to make sure it sticks.</span><span class="zh">前幾分鐘要看著,確認有黏在平台上。</span></li>
+<li><span class="en">Let it cool, take the parts off and peel away the brim.</span><span class="zh">等它冷卻,取下零件,撕掉裙邊。</span></li>
+<li><span class="en">Push the nose cone into the tube. If it is tight, sand the bottom part of the nose cone.</span><span class="zh">把鼻錐插進管子。太緊的話,用砂紙磨鼻錐底部。</span></li>
+</ol>
+
+<h2><span class="en">2. Pack it</span><span class="zh">2. 組裝</span></h2>
+<div class="card">
+<svg viewBox="0 0 680 260" role="img" aria-label="Side cutaway from tail to nose: motor, wadding, streamer and cord, and clay in the nose tip. The balance point is 19 cm from the tip.">
+<polygon class="gray" points="70,120 70,80 100,80 140,120"/><polygon class="gray" points="70,170 70,210 100,210 140,170"/>
+<rect class="ink" x="60" y="120" width="410" height="50" fill="none" stroke-width="1.5"/>
+<path d="M470 120 Q530 122 560 145 Q530 168 470 170 Z" fill="none" stroke="#D85A30" stroke-width="1.5"/>
+<rect x="46" y="130" width="96" height="30" rx="2" fill="#E24B4A" opacity="0.8"/>
+<circle cx="180" cy="137" r="9" fill="#B4B2A9"/><circle cx="198" cy="152" r="9" fill="#B4B2A9"/><circle cx="216" cy="137" r="9" fill="#B4B2A9"/><circle cx="230" cy="153" r="8" fill="#B4B2A9"/>
+<rect x="262" y="130" width="76" height="30" rx="4" fill="#ED93B1"/>
+<line x1="281" y1="130" x2="281" y2="160" stroke="#993556" stroke-width="0.7"/><line x1="300" y1="130" x2="300" y2="160" stroke="#993556" stroke-width="0.7"/><line x1="319" y1="130" x2="319" y2="160" stroke="#993556" stroke-width="0.7"/>
+<path d="M338 145 Q360 128 382 145 T426 145 T462 145" fill="none" stroke="#7F77DD" stroke-width="1.5"/>
+<line x1="462" y1="124" x2="462" y2="166" stroke="#D85A30" stroke-width="3"/>
+<ellipse cx="528" cy="145" rx="20" ry="11" fill="#EF9F27"/>
+<line class="leader" x1="58" y1="50" x2="58" y2="128"/><text class="th en" x="40" y="42">Motor</text><text class="th zh" x="40" y="42">發動機</text>
+<line class="leader" x1="204" y1="50" x2="204" y2="126"/><text class="th en" x="204" y="42" text-anchor="middle">Wadding</text><text class="th zh" x="204" y="42" text-anchor="middle">防火隔熱紙</text>
+<line class="leader" x1="330" y1="50" x2="330" y2="128"/><text class="th en" x="330" y="42" text-anchor="middle">Streamer and cord</text><text class="th zh" x="330" y="42" text-anchor="middle">飄帶和繩子</text>
+<line class="leader" x1="528" y1="50" x2="528" y2="132"/><text class="th en" x="528" y="42" text-anchor="middle">Clay, <tspan class="n">10 g</tspan></text><text class="th zh" x="528" y="42" text-anchor="middle">黏土 <tspan class="n">10 克</tspan></text>
+<polygon points="208,178 198,198 218,198" fill="#1D9E75"/>
+<text class="th en" x="208" y="220" text-anchor="middle">Balance point</text><text class="th zh" x="208" y="220" text-anchor="middle">平衡點</text>
+<text class="ts en" x="208" y="238" text-anchor="middle"><tspan class="n">19 cm</tspan> from the tip, or closer</text><text class="ts zh" x="208" y="238" text-anchor="middle">距離尖端 <tspan class="n">19 公分</tspan>以內</text>
+</svg>
+</div>
+<ol>
+<li><span class="en">Press <mark class="n">10 g</mark> of modelling clay (a marble-sized ball) into the tip of the nose cone. Without it the rocket tumbles.</span><span class="zh">把 <mark class="n">10 克</mark>黏土(約一顆彈珠大)壓進鼻錐尖端。沒有它火箭會翻滾。</span></li>
+<li><span class="en">Tie about <mark class="n">50 cm</mark> of elastic or Kevlar cord to the bar inside the nose cone. Glue the other end inside the tube, above the motor mount.</span><span class="zh">把約 <mark class="n">50 公分</mark>的彈性繩或克維拉繩綁在鼻錐裡的橫桿上,另一端黏在管子內側、發動機座上方。</span></li>
+<li><span class="en">Tie a streamer to the cord near the nose cone.</span><span class="zh">在靠近鼻錐的繩子上綁一條飄帶。</span></li>
+<li><span class="en">Push <mark class="n">3 or 4 sheets</mark> of recovery wadding into the tube from the top, then the streamer and cord, then the nose cone.</span><span class="zh">從管口塞入 <mark class="n">3 到 4 張</mark>防火隔熱紙,再放飄帶和繩子,最後蓋上鼻錐。</span></li>
+<li><span class="en">Wrap tape around an <mark class="n">18 mm</mark> motor (B or C size) until it pushes in snugly from the back. It sticks out about <mark class="n">6 mm</mark>.</span><span class="zh">在 <mark class="n">18 mm</mark> 發動機(B 或 C 級)外面纏膠帶,直到從尾端塞入時剛好緊。它會露出約 <mark class="n">6 mm</mark>。</span></li>
+<li><span class="en">Balance the rocket on one finger. It should balance <mark class="n">19 cm</mark> or less from the nose tip. If the balance point is further back, add more clay.</span><span class="zh">用一根手指平衡火箭。平衡點應該在距離鼻錐尖端 <mark class="n">19 公分</mark>以內。如果太靠後,就再加黏土。</span></li>
+</ol>
+
+<h2><span class="en">3. Launch it</span><span class="zh">3. 發射</span></h2>
+<div class="card">
+<svg viewBox="0 0 680 370" role="img" aria-label="The rocket sits on a launch rod on a pad, wired to a controller at least 5 metres away.">
+<line class="ink" x1="40" y1="300" x2="640" y2="300" stroke-width="1"/>
+<path class="ink" d="M130 300 L160 280 L190 300" fill="none" stroke-width="2"/>
+<line class="ink" x1="160" y1="60" x2="160" y2="282" stroke-width="1.5"/>
+<rect class="gray" x="166" y="150" width="22" height="126"/><polygon class="gray" points="188,276 214,276 214,262 188,238"/>
+<path d="M164 150 Q164 115 177 100 Q190 115 190 150 Z" fill="#F0997B" stroke="#993C1D" stroke-width="0.7"/>
+<rect class="ink" x="158" y="200" width="8" height="24" fill="none" stroke-width="1"/>
+<path d="M177 278 Q177 296 230 296 L500 296" fill="none" stroke="#7F77DD" stroke-width="1.5"/>
+<rect x="500" y="254" width="110" height="44" rx="6" fill="#CECBF6" stroke="#534AB7" stroke-width="0.7"/>
+<text x="555" y="281" text-anchor="middle" font-size="14" font-weight="600" fill="#26215C" class="en">Controller</text><text x="555" y="281" text-anchor="middle" font-size="14" font-weight="600" fill="#26215C" class="zh">控制器</text>
+<line class="leader" x1="162" y1="80" x2="254" y2="80"/><text class="th en" x="260" y="84">Launch rod</text><text class="th zh" x="260" y="84">發射桿</text>
+<line class="leader" x1="190" y1="170" x2="254" y2="170"/><text class="th en" x="260" y="168">Rocket</text><text class="th zh" x="260" y="168">火箭</text><text class="ts en" x="260" y="186">Lug slides over the rod</text><text class="ts zh" x="260" y="186">導管套在發射桿上</text>
+<line class="ink" x1="200" y1="328" x2="492" y2="328" stroke-width="1.5"/>
+<path class="ink" d="M208 322 L200 328 L208 334 M484 322 L492 328 L484 334" fill="none" stroke-width="1.5"/>
+<text class="th en" x="346" y="352" text-anchor="middle">Stand back <tspan class="n">5 m</tspan> or more</text><text class="th zh" x="346" y="352" text-anchor="middle">退後至少 <tspan class="n">5 公尺</tspan></text>
+</svg>
+</div>
+<ol>
+<li><span class="en">Pick a big open field, away from dry grass, trees and power lines.</span><span class="zh">選一個空曠的大場地,遠離乾草、樹木和電線。</span></li>
+<li><span class="en">Put the igniter and plug into the motor, following the motor's instructions.</span><span class="zh">依照發動機的說明,裝上點火器和塞子。</span></li>
+<li><span class="en">Slide the rocket onto the launch rod.</span><span class="zh">把火箭套上發射桿。</span></li>
+<li><span class="en">Clip the controller wires to the igniter.</span><span class="zh">把控制器的夾子夾在點火器上。</span></li>
+<li><span class="en">Walk back at least <mark class="n">5 m</mark>, count down and press the button.</span><span class="zh">退後至少 <mark class="n">5 公尺</mark>,倒數,按下按鈕。</span></li>
+</ol>
+
+<h2><span class="en">Checklist before launch</span><span class="zh">發射前檢查表</span></h2>
+<label class="chk"><input type="checkbox"><span><span class="en">Clay is in the nose tip</span><span class="zh">黏土已放進鼻錐尖端</span></span></label>
+<label class="chk"><input type="checkbox"><span><span class="en">Cord is tied to the nose cone and glued in the tube</span><span class="zh">繩子已綁在鼻錐上並黏在管內</span></span></label>
+<label class="chk"><input type="checkbox"><span><span class="en">Wadding is in, under the streamer</span><span class="zh">防火隔熱紙已放入,在飄帶下方</span></span></label>
+<label class="chk"><input type="checkbox"><span><span class="en">Nose cone slides off with a light pull</span><span class="zh">鼻錐輕輕一拉就能取下</span></span></label>
+<label class="chk"><input type="checkbox"><span><span class="en">Motor is snug and does not fall out</span><span class="zh">發動機夠緊,不會掉出來</span></span></label>
+<label class="chk"><input type="checkbox"><span><span class="en">Rocket balances <mark class="n">19 cm</mark> or less from the tip</span><span class="zh">平衡點在距離尖端 <mark class="n">19 公分</mark>以內</span></span></label>
+<label class="chk"><input type="checkbox"><span><span class="en">Rocket with motor weighs less than the maximum liftoff weight on the motor package (expect about <mark class="n">85 g</mark>)</span><span class="zh">火箭加發動機的重量低於發動機包裝上的最大起飛重量(預計約 <mark class="n">85 克</mark>)</span></span></label>
+<label class="chk"><input type="checkbox"><span><span class="en">Everyone is <mark class="n">5 m</mark> back or more</span><span class="zh">所有人都退到 <mark class="n">5 公尺</mark>以外</span></span></label>
+<div class="warn"><span class="en">The motor burns real fuel. Follow the instructions on the motor package and keep your face and hands away from the back of the rocket once the igniter is in.</span><span class="zh">發動機燃燒的是真正的燃料。請依照包裝上的說明操作,裝上點火器後,臉和手都要遠離火箭尾端。</span></div>
+<p class="foot"><span class="en">Designed with code (CadQuery). Not yet printed or flown.</span><span class="zh">以程式碼設計(CadQuery)。尚未實際列印或試飛。</span></p>
+</main>
+<script>
+function setLang(z){document.body.classList.toggle('zh',z);document.documentElement.lang=z?'zh-Hant':'en';
+document.getElementById('b-en').setAttribute('aria-pressed',!z);document.getElementById('b-zh').setAttribute('aria-pressed',z);
+try{localStorage.setItem('lang',z?'zh':'en')}catch(e){}}
+document.getElementById('b-en').onclick=function(){setLang(false)};document.getElementById('b-zh').onclick=function(){setLang(true)};
+try{if(localStorage.getItem('lang')==='zh')setLang(true)}catch(e){}
+</script>
+</body>
+</html>
